@@ -1,16 +1,71 @@
+
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+<title>Tic Tac Toe</title>
+<style>
+.container{
+    text-align:center;
+}
+
+.board{
+    width:300px;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+}
+
+.cell{
+    height:100px;
+    border:2px solid black;
+    font-size:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.message{
+    font-size:20px;
+    margin-top:10px;
+}
+</style>
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+
+<div class="container">
+
+<h1>Tic Tac Toe</h1>
+
+<div id="input-section">
+Player 1 <input id="player-1" placeholder="enter name"><br><br>
+Player 2 <input id="player-2" placeholder="enter name"><br><br>
+
+<button id="submit">Start Game</button>
+</div>
+
+<div class="message"></div>
+
+<div class="board" id="board" style="display:none">
+
+<div class="cell" id="1"></div>
+<div class="cell" id="2"></div>
+<div class="cell" id="3"></div>
+
+<div class="cell" id="4"></div>
+<div class="cell" id="5"></div>
+<div class="cell" id="6"></div>
+
+<div class="cell" id="7"></div>
+<div class="cell" id="8"></div>
+<div class="cell" id="9"></div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
-
 </html>
