@@ -1,66 +1,70 @@
 
-let player1="";
-let player2="";
-let current="X";
+let player1 = "";
+let player2 = "";
+let current = "X";
 
-let board=["","","","","","","","",""];
+let board = ["","","","","","","","",""];
 
-const submit=document.getElementById("submit");
-const boardDiv=document.getElementById("board");
-const message=document.querySelector(".message");
-const cells=document.querySelectorAll(".cell");
+const submit = document.getElementById("submit");
+const boardDiv = document.getElementById("board");
+const message = document.querySelector(".message");
+const cells = document.querySelectorAll(".cell");
 
-submit.addEventListener("click",function(){
+submit.addEventListener("click", function(){
 
-player1=document.getElementById("player-1").value;
-player2=document.getElementById("player-2").value;
+player1 = document.getElementById("player-1").value;
+player2 = document.getElementById("player-2").value;
 
-if(player1==="" || player2==="") return;
+if(player1 === "" || player2 === "") return;
 
-document.getElementById("input-section").style.display="none";
-boardDiv.style.display="grid";
+document.getElementById("input-section").style.display = "none";
+boardDiv.style.display = "grid";
 
-message.textContent=player1 + ", you're up";
+message.textContent = player1 + ", you're up";
 
 });
 
-cells.forEach(cell=>{
+cells.forEach(cell => {
 
-cell.addEventListener("click",function(){
+cell.addEventListener("click", function(){
 
-let index=cell.id-1;
+let index = cell.id - 1;
 
-if(board[index]!=="") return;
+if(board[index] !== "") return;
 
-board[index]=current;
-cell.textContent=current;
+board[index] = current;
+cell.textContent = current;
 
-let winPattern=checkWinner();
+let winPattern = checkWinner();
 
 if(winPattern){
 
-let winner=current==="X"?player1:player2;
+let winner = current === "X" ? player1 : player2;
 
-message.textContent=winner + ", congratulations you won!";
+message.textContent = winner + ", congratulations you won!";
 
-winPattern.forEach(i=>{
-cells[i].classList.add("winner");
+/* 🎯 TURN WINNING CELLS PURPLE */
+
+winPattern.forEach(i => {
+cells[i].style.background = "#8a008a";
+cells[i].style.color = "white";
 });
 
 return;
 }
 
-current=current==="X"?"O":"X";
+current = current === "X" ? "O" : "X";
 
-message.textContent=(current==="X"?player1:player2)+", you're up";
+message.textContent = (current === "X" ? player1 : player2) + ", you're up";
+
+});
 
 });
 
-});
 
 function checkWinner(){
 
-const patterns=[
+const patterns = [
 
 [0,1,2],
 [3,4,5],
@@ -75,9 +79,9 @@ const patterns=[
 
 for(let p of patterns){
 
-let [a,b,c]=p;
+let [a,b,c] = p;
 
-if(board[a] && board[a]===board[b] && board[a]===board[c]){
+if(board[a] && board[a] === board[b] && board[a] === board[c]){
 
 return p;
 
